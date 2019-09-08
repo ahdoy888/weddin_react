@@ -19,11 +19,10 @@ const Routes = ({ setCurrentUser, history, currentUser }) => {
   return (
     <Switch>
       <Route exact path='/' component={ Home } />
-      {/* <Route path='/post' component={ Post } /> */}
       <Route path='/register' component={ Register } />
       <Route path='/login' render={() => <Login setCurrentUser={setCurrentUser} history={history} />} />
       <PrivateRoute path='/profile' component={ ProfileContainer } />
-      <PrivateRoute path='/contacts' component={ PostsContainer } />
+      <PrivateRoute path='/posts' component={ PostsContainer } />
     </Switch>
   );
 };

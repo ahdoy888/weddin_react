@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import NavBar from './components/Layout/NavBar';
+import Footer from './components/Layout/Footer';
 import Routes from './config/routes';
 
 import { API_URL } from './constants';
@@ -32,6 +33,7 @@ class App extends Component {
       <NavBar logout={this.handleLogout} currentUser={this.state.currentUser} />
         <div className="container">
           <Routes setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}  />
+      {/* <Footer /> */}
         </div>
       </>
     );

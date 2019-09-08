@@ -1,24 +1,24 @@
 import React from 'react';
-// import Comments from '../Comments/Comments';
-// import Posts from '../Posts/Post';
+import './Posts.css';
 
-// import { API_URL } from '../../constants';
 
 
 const Posts = (props)=> {
 
- const posts = props.posts.map(post => {
+ const posts = props.posts.map((post, index) => {
   return (
     // <div className="post">
     //   <h3>{this.props.title} || {this.props.content}</h3>
     //   <button onClick={() => this.removePost(this.props.id)}>Delete</button>
     // </div>
 
-    <div class="card" style={{width: 18 + `rem`}}>
-      <img src={post.img} class="card-img-top" alt="..." />
-      <div class="card-body">
-        <p class="card-text">{post.content}</p>
+    <div className="card" key={index} className="posts" style={{width: 15 + `rem`}}>
+      <img src={post.img} className="card-img-top" alt="..." />
+      <div className="card-body">
+        <p className="card-text">{post.content}</p>
       </div>
+      <button onClick={() => props.editPost(post)}>Edit</button>
+      <button onClick={() => props.removePost(post._id)}>Delete</button>
     </div>
   
 

@@ -10,22 +10,56 @@ class PostsContainer extends Component {
       posts: [],
       img: '',
       content: '',
-      // username: '',
+      username: '',
+      mode: 'view post'
     }
 
 
-  // handleChange = (event) => {
-  //     this.setState({[event.target.name]: event.target.value});
-  // };
+  handleChange = (event) => {
+      this.setState({[event.target.name]: event.target.value});
+  };
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   let userId = localStorage.getItem('uid');
-  //   const newPost = {title: this.state.title,content: this.state.content,username:userId, city: this.props.currentCity.id};
-  //   axios.post(`${API_URL}/post`, newPost, { withCredentials: true })
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err));
-  // };
+  handleSubmit = event => {
+    event.preventDefault();
+    let userId = localStorage.getItem('uid');
+    const { img, content, mode, id } = this.state
+    const newPost = {
+      img, content
+    };
+    if(mode === "create post"){
+    axios.post(`${API_URL}/posts`, newPost, { withCredentials: true })
+      .then(res =>{
+        const posts = this.state.posts
+        posts.push(res.data.data)
+        this.setState({
+          id: "",
+          img: "",
+          content: "",
+          posts,
+          mode: 'view post'
+        })
+      })
+      .catch(err => console.log(err));
+    }else {
+      axios.put(`${API_URL}/posts/${id}`, newPost, { withCredentials: true })
+      .then(res =>{
+        const posts = this.state.posts.map((post)=> {
+          if(post._id === id){
+            post = res.data.data
+          }
+          return post
+        })
+        this.setState({
+          id: "",
+          img: "",
+          content: "",
+          posts,
+          mode: 'view post'
+        })
+      })
+      .catch(err => console.log(err));
+    }
+  };
 
   componentDidMount() {
     axios.get(`${API_URL}/posts`, { withCredentials: true })
@@ -36,26 +70,61 @@ class PostsContainer extends Component {
     .catch(err=>console.log(err));
   };
 
+  editPost = (post) => {
+    this.setState({
+      mode: "edit post",
+      id: post._id,
+      img: post.img,
+      content: post.content
+    })
+  }
+
   // componentDidUpdate(prevProps) {
-  //   axios.get(`${API_URL}/post`).then(res => {
-  //     this.setState({posts: res.data});
+  //   axios.get(`${API_URL}/posts`, { withCredentials: true })
+  //   .then(res => {
+  //     this.setState({posts: res.data.data});
   //     console.log(res.data);
   //   })
   //   .catch(err=>console.log(err));
   // };
 
-  // removePost = (id) => {
-  //   // this.props.removePost(id);
-  //   axios.delete(`${API_URL}/post/${id}`,  { withCredentials: true }).then(res => {
-  //     console.log("successfully removed a post!");
-  //   }).then().catch(err => console.log(err))
-  // }
+  removePost = (id) => {
+    // this.props.removePost(id);
+    axios.delete(`${API_URL}/posts/${id}`,  { withCredentials: true })
+    .then(res => {
+      this.setState({
+        posts: this.state.posts.filter((post)=> post._id !== id)
+      })
+      console.log("successfully removed a post!");
+    }).then().catch(err => console.log(err))
+  }
 
  
 
   render() {
   
-  return <Posts posts = {this.state.posts} />
+  return (
+   
+    <div>
+      <button onClick={() => this.setState({
+        id: "",
+        img: "",
+        content: "",
+        mode: this.state.mode === "create post"? "view post": "create post"
+      })}> {this.state.mode === "create post"? "View Posts": "Create Post"}</button>
+      {this.state.mode === "create post" || this.state.mode === "edit post"?
+      <div>
+        <form>
+          <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>
+          <input onChange={this.handleChange} placeholder="content" type="text" name = "content" value={this.state.content}/>
+          <button onClick={this.handleSubmit}>submit</button>
+        </form>
+      </div>
+
+       :<Posts posts ={this.state.posts} editPost={this.editPost} removePost={this.removePost}/>
+    }
+    </div>
+  )
   }
 }
 
