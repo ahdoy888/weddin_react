@@ -8,7 +8,7 @@ class PostsContainer extends Component {
 
     state = {
       posts: [],
-      title: '',
+      img: '',
       content: '',
       // username: '',
     }

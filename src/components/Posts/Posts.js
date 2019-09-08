@@ -13,9 +13,14 @@ const Posts = (props)=> {
     //   <h3>{this.props.title} || {this.props.content}</h3>
     //   <button onClick={() => this.removePost(this.props.id)}>Delete</button>
     // </div>
-    <div>
-      <h3>{post.content}</h3>
+
+    <div class="card" style={{width: 18 + `rem`}}>
+      <img src={post.img} class="card-img-top" alt="..." />
+      <div class="card-body">
+        <p class="card-text">{post.content}</p>
+      </div>
     </div>
+  
 
   )
  })
