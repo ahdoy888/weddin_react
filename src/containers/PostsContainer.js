@@ -21,7 +21,7 @@ class PostsContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let userId = localStorage.getItem('uid');
+    
     const { img, content, mode, id } = this.state
     const newPost = {
       img, content
@@ -79,14 +79,6 @@ class PostsContainer extends Component {
     })
   }
 
-  // componentDidUpdate(prevProps) {
-  //   axios.get(`${API_URL}/posts`, { withCredentials: true })
-  //   .then(res => {
-  //     this.setState({posts: res.data.data});
-  //     console.log(res.data);
-  //   })
-  //   .catch(err=>console.log(err));
-  // };
 
   removePost = (id) => {
     // this.props.removePost(id);
@@ -114,11 +106,24 @@ class PostsContainer extends Component {
       })}> {this.state.mode === "create post"? "View Posts": "Create Post"}</button>
       {this.state.mode === "create post" || this.state.mode === "edit post"?
       <div>
-        <form>
-          <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>
-          <input onChange={this.handleChange} placeholder="content" type="text" name = "content" value={this.state.content}/>
+        <div className="card" style={{width: '18rem'}}>
+  <div className="card-body">
+    <h5 className="card-title">Card title</h5>
+    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <form>
+          <div>
+            <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>
+          </div>
+
+          <div>
+            <input onChange={this.handleChange} placeholder="content" type="text" name = "content" value={this.state.content}/>
+          </div>
           <button onClick={this.handleSubmit}>submit</button>
         </form>
+  </div>
+</div>
+
+  
       </div>
 
        :<Posts posts ={this.state.posts} editPost={this.editPost} removePost={this.removePost}/>

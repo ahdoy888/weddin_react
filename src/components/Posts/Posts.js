@@ -7,12 +7,9 @@ const Posts = (props)=> {
 
  const posts = props.posts.map((post, index) => {
   return (
-    // <div className="post">
-    //   <h3>{this.props.title} || {this.props.content}</h3>
-    //   <button onClick={() => this.removePost(this.props.id)}>Delete</button>
-    // </div>
+   
 
-    <div className="card" key={index} className="posts" style={{width: 15 + `rem`}}>
+    <div className="card" key={index} style={{width: 15 + `rem`}}>
       <img src={post.img} className="card-img-top" alt="..." />
       <div className="card-body">
         <p className="card-text">{post.content}</p>
