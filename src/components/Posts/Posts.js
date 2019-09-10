@@ -41,7 +41,7 @@ const Posts = (props)=> {
      { posts }
     </div>
     <div className="col-md-4">
-     bvhgnbjhbnjhbjhbhb
+
     </div>
     </div>
  )
