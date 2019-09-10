@@ -11,7 +11,8 @@ class PostsContainer extends Component {
       img: '',
       content: '',
       username: '',
-      mode: 'view post'
+      mode: 'view post',
+      isLoggedIn: false
     }
 
 
@@ -62,6 +63,11 @@ class PostsContainer extends Component {
   };
 
   componentDidMount() {
+    console.log("=====>", this.props)
+    this.setState({
+      isLoggedIn: !!localStorage.getItem('uid')
+    })
+
     axios.get(`${API_URL}/posts`, { withCredentials: true })
     .then(res => {
       this.setState({posts: res.data.data});
@@ -94,39 +100,35 @@ class PostsContainer extends Component {
  
 
   render() {
-  
   return (
    
     <div>
-      <button onClick={() => this.setState({
+      {this.state.isLoggedIn && <button onClick={() => this.setState({
         id: "",
         img: "",
         content: "",
         mode: this.state.mode === "create post"? "view post": "create post"
-      })}> {this.state.mode === "create post"? "View Posts": "Create Post"}</button>
+      })}> {this.state.mode === "create post"? "View Posts": "Create Post"}</button>}
       {this.state.mode === "create post" || this.state.mode === "edit post"?
       <div>
         <div className="card" style={{width: '18rem'}}>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <form>
-          <div>
-            <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>
-          </div>
-
-          <div>
-            <input onChange={this.handleChange} placeholder="content" type="text" name = "content" value={this.state.content}/>
-          </div>
-          <button onClick={this.handleSubmit}>submit</button>
-        </form>
-  </div>
-</div>
-
-  
+          <div className="card-body">
+            <h5 className="card-title">Post Info</h5>
+            {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+            <form>
+              <div>
+                <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>
+              </div>
+              <div>
+                <input onChange={this.handleChange} placeholder="content" type="text" name = "content" value={this.state.content}/>
+              </div>
+              <button onClick={this.handleSubmit}>submit</button>
+            </form>
+      </div>
+    </div>
       </div>
 
-       :<Posts posts ={this.state.posts} editPost={this.editPost} removePost={this.removePost}/>
+       :<Posts isLoggedIn={this.state.isLoggedIn} posts ={this.state.posts} editPost={this.editPost} removePost={this.removePost}/>
     }
     </div>
   )

@@ -38,7 +38,10 @@ const Home = () => {
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="sr-only">Next</span>
           </a>
-          <div><h2>Welcome to Our Wedding</h2></div>
+          <br />
+          <div>
+            <span><h2>Welcome to Our Wedding</h2></span>
+          </div>
         </div>
       </div>
 

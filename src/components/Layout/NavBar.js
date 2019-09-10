@@ -9,7 +9,7 @@ const NavBar = ({ logout, currentUser }) => {
         <NavLink className="nav-link" exact to="/">Home</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/post">Post</NavLink>
+        <NavLink className="nav-link" to="/posts">Post</NavLink>
       </li>
       <li className="nav-item">
         <NavLink className="nav-link" to="/register">Register</NavLink>

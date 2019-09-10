@@ -1,39 +1,29 @@
 
-
-/* .container {
-  max-width: 100% !important;
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-}
-
-.mb-4, .my-4 {
-  margin-bottom: 0 !important;
-} */
-
-
 body {
-  background-image: url('https://previews.123rf.com/images/ke77kz/ke77kz1503/ke77kz150300502/37895007-decorative-wedding-background-with-gold-rings-and-floral-european-patterns-.jpg');
-  background-size: cover;
   
+  /* background-image: url('https://thumbs.gfycat.com/BitesizedTotalCockerspaniel-size_restricted.gif');
+  background-size: cover;
+  background-repeat: no-repeat; */
+
+  background-image: url('http://www.pptbackgrounds.org/uploads/wedding-couples-border-marry-flowers-backgrounds-wallpapers.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   
 }
 
 
 .carousel {
-  max-width: 30%;
+  max-width: 50%;
+  text-align: center;
 
 }
-img{
-  height: 300px;
-  width: 500px
+.d-block {
+  margin-top: 50px;
+  height: 450px;
+  width: 100vw;
 }
 
-.container {
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  align-items: center
-}
+
 
 
 

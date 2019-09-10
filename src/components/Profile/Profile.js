@@ -6,13 +6,18 @@ const Profile = ({ profile: { username, email, signup_date }}) => {
   //   const { username } = props.user;
   // console.log('Profile Props = ', props);
   return (
-    <div class="card" className="profile" style={{width: 15 + `rem`}}>
+    <div className="row d-flex">
+      <div className="col-md-5 ">
+      <div className="card profile" >
       <img src="https://www.cmcaindia.org/wp-content/uploads/2015/11/default-profile-picture-gmail-2.png" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <p class="card-text"><strong>Username:</strong> {username}</p>
-        <p class="card-text"><strong>Email:</strong> {email}</p>
-        <p class="card-text"><strong>Signup Date:</strong> {new Date(signup_date).toLocaleString()}</p>
+      <div className="card-body">
+        <p className="card-text"><strong>Username:</strong> {username}</p>
+        <p className="card-text"><strong>Email:</strong> {email}</p>
+        <p className="card-text"><strong>Signup Date:</strong> {new Date(signup_date).toLocaleString()}</p>
       </div>
+      </div>
+    </div>
+   
       
       
       {/* <p><strong>Username:</strong> {username}</p>
