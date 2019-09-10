@@ -9,7 +9,7 @@ const Profile = ({ profile: { username, email, signup_date }}) => {
     <div className="row d-flex">
       <div className="col-md-5 ">
       <div className="card profile" >
-      <img src="https://www.cmcaindia.org/wp-content/uploads/2015/11/default-profile-picture-gmail-2.png" class="card-img-top" alt="..." />
+      <img src="https://www.cmcaindia.org/wp-content/uploads/2015/11/default-profile-picture-gmail-2.png" class="card-img-top" alt="avatar" />
       <div className="card-body">
         <p className="card-text"><strong>Username:</strong> {username}</p>
         <p className="card-text"><strong>Email:</strong> {email}</p>

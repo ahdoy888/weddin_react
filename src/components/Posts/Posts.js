@@ -13,18 +13,19 @@ const Posts = (props)=> {
       <img src={post.img} className="card-img-top" alt="..." />
       <div className="card-body">
         <p className="card-text">{post.content}</p>
-        <div>
+        {/* <div>
           <h3>Comments</h3>
           {
             post.comments.map((comment)=> 
               <p className="card-text" key={comment._id}>{comment.content}</p>
+              
             )
           }
         
-        </div>
+        </div> */}
       </div>
       {props.isLoggedIn &&<>
-       <button onClick={() => props.editPost(post)}>Edit</button>
+      <button onClick={() => props.editPost(post)}>Edit</button>
       <button onClick={() => props.removePost(post._id)}>Delete</button>
       </>}
     </div>

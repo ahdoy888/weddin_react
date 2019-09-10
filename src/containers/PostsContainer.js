@@ -114,7 +114,6 @@ class PostsContainer extends Component {
         <div className="card" style={{width: '18rem'}}>
           <div className="card-body">
             <h5 className="card-title">Post Info</h5>
-            {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
             <form>
               <div>
                 <input onChange={this.handleChange} placeholder="image url" type="text" name="img" value={this.state.img}/>

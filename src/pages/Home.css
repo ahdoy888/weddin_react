@@ -1,26 +1,28 @@
 
 body {
-  
-  /* background-image: url('https://thumbs.gfycat.com/BitesizedTotalCockerspaniel-size_restricted.gif');
-  background-size: cover;
-  background-repeat: no-repeat; */
-
   background-image: url('http://www.pptbackgrounds.org/uploads/wedding-couples-border-marry-flowers-backgrounds-wallpapers.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   
 }
 
-
 .carousel {
-  max-width: 50%;
+  max-width: 55%;
   text-align: center;
+  margin-right: 10px;
 
 }
 .d-block {
   margin-top: 50px;
   height: 450px;
-  width: 100vw;
+  padding-right: 20px;
+}
+
+h2 {
+  font-family: 'Lobster', cursive;
+  font-weight: bold;
+  font-size: 34px;
+  margin: 10px 0;
 }
 
 
